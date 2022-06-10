@@ -1,0 +1,34 @@
+
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Home</title>{% endblock %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+  <p>Welcome to <em>LocalLibrary</em></p>
+
+<h2>Dynamic content</h2>
+
+  <p>The library has the following record counts:</p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Word 'Сказка' in title book:</strong> {{ number_wild_books }}</li>
+    <li><strong>Genere 'Сказка':</strong> {{ containing_genre }}</li>
+    {% if books_containing_genre %}
+    <li><strong>Genre book 'Сказки' :</strong>
+        {% for book in books_containing_genre %}
+            <h4><a href="{{ book.get_absolute_url }}">'{{ book.title }}'</a></h4>
+        {% endfor %}
+    {% else %}
+        <h4>Таких книг пока нет</h4>
+    {% endif %}
+    </li>
+
+
+  </ul>
+
+{% endblock %}

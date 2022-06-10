@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Author Detail</title>{% endblock %}
+
+{% block content %}
+    <h1>Author: {{ author.last_name }}{{ author.first_name }}</h1>
+    {% if author.date_of_birth == none %}
+        <p>date_of_birth - no date</p>
+    {% else %}
+        <h3>{{ author.date_of_birth }}{{ author.date_of_death }}</h3>
+    {% endif %}
+
+    <h1>Books</h1>
+
+    {% for copy in author.book_set.all %}
+        <li><strong>{{ copy }}({{ copy.bookinstance_set.all.count }})</strong></li>
+
+
+
+        <dd>{{ copy.summary }}</dd>
+
+    {% endfor %}
+
+
+
+{% endblock %}

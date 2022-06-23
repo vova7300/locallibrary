@@ -13,7 +13,7 @@
     <h1>Books</h1>
 
     {% for copy in author.book_set.all %}
-        <li><strong>{{ copy }}({{ copy.bookinstance_set.all.count }})</strong></li>
+        <li><strong><a href="{{ copy.get_absolute_url }}">{{ copy.title }}</a>({{ copy.bookinstance_set.all.count }})</strong></li>
 
 
 
